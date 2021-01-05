@@ -1,2 +1,2 @@
 # Sudoku
-Algorithm regards to Sudoku game. Written in Python.
+Sudoku solving algorithm implemented in Python.
