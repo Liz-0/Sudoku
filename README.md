@@ -1,2 +1,2 @@
-# Sukodu
-Algorithm regards to Sukodu game. Written in Python.
+# Sudoku
+Algorithm regards to Sudoku game. Written in Python.
