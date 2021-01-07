@@ -1,4 +1,5 @@
 #Part A
+#Reads in a file containing a sudoku grid and returns returns the contents of the file as a Python-readable table.
 def grid_from_file(file_name):
     f = open(file_name)
     myfile = f.readlines()
@@ -15,6 +16,7 @@ def grid_from_file(file_name):
     return(blist)
 
 #Part B
+#Determines whether a particular value can be entered at a particular location in a valid grid, while maintaining validity.
 def valid_entry(grid , num , r , c):
     for a in grid[r]:
         if num == a:
@@ -35,6 +37,7 @@ def valid_entry(grid , num , r , c):
     return(True)
 
 #Part C
+#Returns the complete list of valid augmented grids, where each grid contains num in row r.
 from copy import deepcopy
 def grids_augmented_in_row(grid , num , r):
     if num in grid[r]:
@@ -50,6 +53,7 @@ def grids_augmented_in_row(grid , num , r):
     return(M)
 
 #Part D
+#Returns a list of valid n × n grids, where each grid contains n nums.
 def grids_augmented_with_number(grid , num , a = 0 , m = 0):
     if a == 0:
        m = len(grid)
@@ -70,6 +74,7 @@ def grids_augmented_with_number(grid , num , a = 0 , m = 0):
     return(grids_augmented_with_number(N , num , a , m))
 
 #Part E
+#Finds the solution for the given sudoku.
 def compeleted(file):
     for i in range(len(file)):
         for j in range(len(file[i])):
