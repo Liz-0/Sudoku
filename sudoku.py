@@ -1,5 +1,5 @@
 #Part A
-#Reads in a file containing a sudoku grid and returns returns the contents of the file as a Python-readable table.
+#Reads in a file containing a sudoku grid and returns the contents of the file as a Python-readable table.
 def grid_from_file(file_name):
     f = open(file_name)
     myfile = f.readlines()
