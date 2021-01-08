@@ -20,6 +20,54 @@ def grid_from_file(file_name):
                blist[b][c] = int(blist[b][c])
     return(blist)
 
+#Part C
+#Returns the complete list of valid augmented grids, where each grid contains num in row r.
+'''Input: a nested list grid, that represents a valid n × n sudoku grid; each item in the inner list is either an
+integer, or the string ‘x’; a positive integer num, where 0 < num ≤ n; and a non-negative integer r, where 0 ≤ r < n.'''
+'''Output: a nested list containing all augmented sudoku grids such that each grid is valid, and each grid
+contains num in row r. If num is in row r in the original grid, return a list containing the original grid. If
+there is no way to augment the given grid to create a valid grid where num is in row r, return an empty list.'''
+
+from copy import deepcopy
+def grids_augmented_in_row(grid , num , r):
+    if num in grid[r]:
+       return([grid])
+    M = []
+    for c in range(len(grid)):
+        if grid[r][c] == "x":
+           aBool = valid_entry(grid , num , r , c)
+           if aBool == True:
+              mygrid = deepcopy(grid)
+              mygrid[r][c] = num
+              M.append(mygrid)
+    return(M)
+
+#Part D
+#Returns a list of valid n × n grids, where each grid contains n nums.
+'''Input: a nested list grid, that represents a valid n × n sudoku grid; each item in the inner list is either an
+integer (example 13), or the string ‘x’; and a positive integer num, where 0 < num ≤ n.'''
+'''Output: a nested list containing all valid sudoku grids where each grid contains n nums. If there is no way to
+augment the given grid to create a valid sudoku grid containing n nums, return an empty list.'''
+
+def grids_augmented_with_number(grid , num , a = 0 , m = 0):
+    if a == 0:
+       m = len(grid)
+       N = [deepcopy(grid)]
+    else:
+        N = grid
+        
+    if a == m:
+       return(N)
+    n = len(N)
+    b = 0
+    M = []
+    while b < n:
+          M += grids_augmented_in_row(N[b] , num , a)
+          b += 1
+    N = M
+    a += 1
+    return(grids_augmented_with_number(N , num , a , m))
+
 #Part B
 #Determines whether a particular value can be entered at a particular location in a valid grid, while maintaining validity.
 '''Input: a nested list grid, that represents an n × n sudoku grid; each item in the inner list is either an integer, 
